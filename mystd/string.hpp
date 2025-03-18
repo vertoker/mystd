@@ -1,8 +1,4 @@
-// string.hpp
-
-#ifndef STRING_VERTOKER_H
-#define STRING_VERTOKER_H
-
+#pragma once
 #include <iostream>
 
 namespace mystd
@@ -10,6 +6,10 @@ namespace mystd
     class string
     {
     public:
+        // I decided to use growth factor identical to std::string
+        // I know it's less efficient in most cases, but who cares
+        static constexpr double GrowthFactor = 2.0;
+
         string();
         string(const char* c_str);
         
@@ -21,7 +21,7 @@ namespace mystd
         ~string();
 
         // operators
-	    inline char& operator[](size_t index) const { return data[index]; }
+	    inline char& operator[](size_t index) const { return _data[index]; }
 
         friend bool operator==(const string& lhs, const string& rhs) noexcept;
         friend bool operator==(const string& lhs, const char* rhs);
@@ -38,24 +38,27 @@ namespace mystd
         friend std::ostream& operator<<(std::ostream& os, string& str);
 
         // "fields"
-        inline size_t      GetSize() const noexcept { return size; }
-        inline size_t      GetCapacity() const noexcept { return capacity; }
-        inline const char* GetData() const { return data; }
+        inline size_t      size() const noexcept { return _size; }
+        inline size_t      capacity() const noexcept { return _capacity; }
+        inline const char* data() const { return _data; }
 
         // functions
-        void Reserve(const size_t newCapacity);
-        void Resize(const size_t newSize);
-        void PushBack(char character);
-        void Clear() noexcept;
+        void reserve(const size_t newCapacity);
+        void resize(const size_t newSize, const char defaultChar);
+        void push_back(char character);
+        void clear() noexcept;
         
     private:
-        size_t UnusedCapacity()  const { return capacity - size; }
-        size_t GetLastIndex()    const { return size > 0 ? size - 1 : 0; }
-        size_t GetGrowthFactor() const { return capacity == 0 ? 1 : capacity * 2; }
+        size_t UnusedCapacity()  const { return _capacity - _size; }
+        size_t GetNextCapacity() const { return _capacity == 0 ? 1 : (size_t)((double)_capacity * GrowthFactor); }
 
-        size_t size;
-        size_t capacity;
-        char* data;
+        // 1. _size and _capacity declared only valid bytes, they both EXCLUDE null-terminated last byte
+        // This also means real allocated bytes ALWAYS equals _capacity + 1
+        // 2. order here used in memory of class, this better order
+
+        size_t _size;
+        size_t _capacity;
+        char* _data;
     };
 
     // External operators
@@ -71,6 +74,3 @@ namespace mystd
     std::ostream& operator<<(std::ostream& os, string& str);
     
 } // namespace mystd
-
-
-#endif // String.hpp

@@ -7,5 +7,7 @@ Study realization of all popular types from STL
 - For testing all types, I use `ctest`
 - Everything written in VS Code (some additional info)
 
+In every realization, I add comments, which explains confused parts
+
 What types already recreated
-- 
+- `string` - `char` only, no `SSO`, no templates, no multithread support
