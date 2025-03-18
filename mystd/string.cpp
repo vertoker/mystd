@@ -33,9 +33,9 @@ string::string(const string& other) : _size{other._size}, _capacity{other._capac
 }
 string::string(string&& other) noexcept : _size{other._size}, _capacity{other._capacity}, _data{other._data}
 {
-    _size = 0;
-    _capacity = 0;
-    _data = nullptr;
+    other._size = 0;
+    other._capacity = 0;
+    other._data = nullptr;
 }
 
 string& string::operator=(const string& other)
