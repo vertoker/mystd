@@ -1,4 +1,5 @@
 #include "string.hpp"
+#include <string.h>
 
 using mystd::string;
 

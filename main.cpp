@@ -3,13 +3,13 @@
 #include <vector>
 
 #include <string>
-#include "string.hpp"
+#include "mystd/string.hpp"
 
 int main()
 {
     std::vector<mystd::string> vec;
 
-    mystd::string buffer;
+    /*mystd::string buffer;
 
     while (std::cin >> buffer)
     {
@@ -22,6 +22,6 @@ int main()
     std::cout << vec.size() << std::endl;
     for (auto& v : vec)
         std::cout << v << std::endl;
-
+*/
     return 0;
 }
