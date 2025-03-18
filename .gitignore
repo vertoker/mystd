@@ -1,0 +1,19 @@
+# Core for CMake auto-generated files
+/out
+bin/
+build/
+builds/
+
+# IDE meta files
+/.vs
+/.vscode
+.idea/
+
+# Files
+*.exe
+*.o
+*.pdb
+*.spv
+
+# Optional
+#CMakeSettings.json
