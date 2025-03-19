@@ -13,4 +13,6 @@ Realization details
 - I use naming convention simular to `std` for consistency
 
 What types already recreated
-- `string` - `char` only, no `SSO`, no templates, no multithread support
+- `mystd::string` - `char` only, no `SSO`, no templates, no multithread support
+- `mystd::array` - copy of `std::array`, but without unreadable `define`, reverse iterators and
+in iterators without some hard to copy operators

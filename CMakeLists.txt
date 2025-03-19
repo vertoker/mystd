@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 #set(SOURCES "main.cpp" "mystd/string.hpp" "mystd/string.cpp")
-add_executable("mystd" "main.cpp" "mystd/string.hpp" "mystd/string.cpp")
+add_executable("mystd" "main.cpp" "mystd/string.hpp" "mystd/string.cpp" "mystd/array.hpp")
 
 #include(CTest)
 #enable_testing()

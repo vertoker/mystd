@@ -2,12 +2,23 @@
 #include <algorithm>
 
 #include <array>
+#include <string>
+
 #include "mystd/array.hpp"
 #include "mystd/string.hpp"
 
 int main()
 {
-    std::array<std::string, 32> arr1;
-    mystd::array<mystd::string, 32> arr2;
+    mystd::array<std::string, 32> arr;
+
+    size_t counter = 1;
+    for (auto& str : arr) {
+        str = std::to_string(counter);
+        ++counter;
+    }
+    
+    for (auto it = arr.begin(); it != arr.end(); ++it)
+        std::cout << *it << std::endl;
+    
     return 0;
 }
