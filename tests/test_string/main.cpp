@@ -3,7 +3,7 @@
 #include <algorithm>
 
 #include <string>
-#include "mystd/string.hpp"
+#include "string.hpp"
 
 struct {
     bool operator()(mystd::string& a, mystd::string& b) const {
@@ -33,6 +33,7 @@ int main()
 
     std::sort(vec.begin(), vec.end(), customLess);
     
+    std::cout << vec.size() << std::endl;
     for (auto& v : vec)
         std::cout << v << std::endl;
 
