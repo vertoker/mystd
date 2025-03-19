@@ -51,7 +51,8 @@ namespace mystd
 
         inline       T* data() noexcept       { return Elements; }
         inline const T* data() const noexcept { return Elements; }
-
+        
+    private:
         T Elements[Size];
     };
 
@@ -59,6 +60,7 @@ namespace mystd
     class array_const_iterator
     {
     public:
+        // for consistensy with iterator_traits
         using difference_type   = std::ptrdiff_t;
         using value_type        = T;
         using pointer           = const T*;
@@ -126,8 +128,10 @@ namespace mystd
     class array_iterator : public array_const_iterator<T, Size>
     {
     public:
+        // shortcut for base class
         using base = array_const_iterator<T, Size>;
 
+        // for consistensy with iterator_traits
         using difference_type   = std::ptrdiff_t;
         using value_type        = T;
         using pointer           = T*;
