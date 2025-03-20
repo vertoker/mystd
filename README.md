@@ -11,8 +11,17 @@ Fundamentals
 Realization details
 - In every realization, I add comments, which explains confused parts
 - I use naming convention simular to `std` for consistency
+- Target standard - `C++11`
 
 What types already recreated
-- `mystd::string` - `char` only, no `SSO`, no templates, no multithread support
-- `mystd::array` - copy of `std::array`, but without unreadable `define`, reverse iterators and
-in iterators without some hard to copy operators
+- `mystd::string` - `char` only `std::string`
+    - no `SSO`, no templates, no multithread support
+    - not fully `constexpr` covered
+- `mystd::array` - copy of `std::array`
+    - without unreadable `defines`
+    - doesn't have reverse iterators
+    - inside iterators doesn't have some operators like `+=`
+- `mystd::fixed_string` - wrapper over `mystd::array`
+    - `char` only, real size is `size + 1`
+    - not fully `constexpr` covered
+    - iterators is `mystd::array_(const_)iterator`

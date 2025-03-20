@@ -5,11 +5,11 @@
 #include <string>
 
 #include "mystd/array.hpp"
-#include "mystd/fixed_string.hpp"
+#include "mystd/string.hpp"
 
 int main()
 {
-    mystd::array<mystd::fixed_string<4>, 32> arr;
+    mystd::array<mystd::string, 32> arr;
     std::array<std::string, 32> arr2;
     
     size_t counter = 1;

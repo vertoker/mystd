@@ -21,19 +21,12 @@ namespace mystd
 
         inline constexpr T size() const noexcept { return Size; }
 
-        inline iterator       begin() noexcept       { return iterator(Elements, 0); }
-        inline const_iterator begin() const noexcept { return const_iterator(Elements, 0); }
-        inline iterator       end() noexcept         { return iterator(Elements, Size); }
-        inline const_iterator end() const noexcept   { return const_iterator(Elements, Size); }
-
-        inline T& at(const size_t pos) noexcept {
-            assert(pos < Size && "Pos out of array range");
-            return Elements[pos];
-        }
-        inline const T& at(const size_t pos) const noexcept {
-            assert(pos < Size && "Pos out of array range");
-            return Elements[pos];
-        }
+        constexpr iterator       begin() noexcept        { return iterator(Elements, 0); }
+        constexpr iterator       end() noexcept          { return iterator(Elements, Size); }
+        constexpr const_iterator begin() const noexcept  { return const_iterator(Elements, 0); }
+        constexpr const_iterator end() const noexcept    { return const_iterator(Elements, Size); }
+        constexpr const_iterator cbegin() const noexcept { return iterator(Elements, 0); }
+        constexpr const_iterator cend() const noexcept   { return iterator(Elements, Size); }
 
         inline T& operator[](const size_t pos) noexcept {
             assert(pos < Size && "Pos out of array range");
@@ -43,16 +36,22 @@ namespace mystd
             assert(pos < Size && "Pos out of array range");
             return Elements[pos];
         }
+        inline T& at(const size_t pos) noexcept {
+            assert(pos < Size && "Pos out of array range");
+            return Elements[pos];
+        }
+        inline const T& at(const size_t pos) const noexcept {
+            assert(pos < Size && "Pos out of array range");
+            return Elements[pos];
+        }
 
         inline       T& front() noexcept       { return Elements[0]; }
         inline const T& front() const noexcept { return Elements[0]; }
         inline       T& back() noexcept        { return Elements[Size - 1]; }
         inline const T& back() const noexcept  { return Elements[Size - 1]; }
-
         inline       T* data() noexcept       { return Elements; }
         inline const T* data() const noexcept { return Elements; }
         
-    private:
         T Elements[Size];
     };
 
