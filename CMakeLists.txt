@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 add_executable("mystd" "main.cpp"
     "mystd/string.hpp" "mystd/string.cpp"
     "mystd/array.hpp"
-    "mystd/fixed_string.hpp" "mystd/fixed_string.cpp"
+    "mystd/fixed_string.hpp"
 )
 
 #include(CTest)
